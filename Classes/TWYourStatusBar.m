@@ -14,18 +14,20 @@ typedef void (^HeapEnumeratorBlock)(__unsafe_unretained id object, __unsafe_unre
 typedef struct {
     Class isa;
 } rm_maybe_object_t;
+
 static CFMutableSetRef classesLoadedInRuntime;
 static CGFloat kBarHeight;
 static UIWindow *kStatusBarWindow = nil;
 static UIView *kCustomView = nil;
 static UILabel *kTextLabel = nil;
+static bool kFoundStatusBarWindow = false;
 
 @implementation TWYourStatusBar
 
 + (void)initialize
 {
     if (self == [TWYourStatusBar class]) {
-        [self retrieveAllWindows];
+        [self retrieveStatusBarWindow];
         
         UILabel *label = [[UILabel alloc] init];
         label.backgroundColor = [UIColor lightGrayColor];
@@ -39,20 +41,25 @@ static UILabel *kTextLabel = nil;
 
 + (void)setCustomView:(UIView *)customView
 {
+    if (!kFoundStatusBarWindow) {
+        [self retrieveStatusBarWindow];
+    }
     if (![kCustomView isEqual:customView]) {
         if (customView) {
-            [kTextLabel removeFromSuperview];
             [kStatusBarWindow addSubview:customView];
         } else {
             [kCustomView removeFromSuperview];
-            [kStatusBarWindow addSubview:kTextLabel];
         }
         kCustomView = customView;
+        kTextLabel.hidden = !customView;
     }
 }
 
 + (void)setCustomText:(NSString*)text;
 {
+    if (!kFoundStatusBarWindow) {
+        [self retrieveStatusBarWindow];
+    }
     kTextLabel.text = text;
 }
 
@@ -63,15 +70,18 @@ static UILabel *kTextLabel = nil;
 
 #pragma mark - internal class methods & C functions
 
-+ (void)retrieveAllWindows {
++ (void)retrieveStatusBarWindow {
     [self enumerateLiveObjectsUsingBlock:^(__unsafe_unretained id object,
                                            __unsafe_unretained Class actualClass) {
         if (!kStatusBarWindow && [object isKindOfClass:[UIWindow class]]) {
             UIWindow *window = (UIWindow *)object;
-            UIView *firstSubView = [[window subviews] firstObject];
-            kBarHeight = firstSubView.bounds.size.height;
-            [[window subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
-            kStatusBarWindow = window;
+            if ([window respondsToSelector:@selector(subviews)]) {
+                UIView *firstSubView = [[window subviews] firstObject];
+                kBarHeight = firstSubView.bounds.size.height;
+                [[window subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+                kStatusBarWindow = window;
+                kFoundStatusBarWindow = true;
+            }
         }
     }];
 }
