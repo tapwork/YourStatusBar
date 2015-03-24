@@ -1,5 +1,4 @@
 //
-//  TWCustomStatusBar.m
 //  YourStatusBar
 //
 //  Created by Christian Menschel on 24/03/15.
@@ -21,11 +20,11 @@ static UIWindow *kStatusBarWindow = nil;
 static UIView *kCustomView = nil;
 static UILabel *kTextLabel = nil;
 
-@implementation TWCustomStatusBar
+@implementation TWYourStatusBar
 
 + (void)initialize
 {
-    if (self == [TWCustomStatusBar class]) {
+    if (self == [TWYourStatusBar class]) {
         [self retrieveAllWindows];
         
         UILabel *label = [[UILabel alloc] init];

@@ -1,5 +1,4 @@
 //
-//  TWCustomStatusBar.h
 //  YourStatusBar
 //
 //  Created by Christian Menschel on 24/03/15.
@@ -8,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TWCustomStatusBar : NSObject
+@interface TWYourStatusBar : NSObject
 
 + (void)setCustomText:(NSString*)text;
 + (UIWindow*)statusBarWindow;

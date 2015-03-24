@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [TWCustomStatusBar setCustomText:@"My Custom Bar Text"];
+    [TWYourStatusBar setCustomText:@"My Custom Bar Text"];
     
     return YES;
 }
