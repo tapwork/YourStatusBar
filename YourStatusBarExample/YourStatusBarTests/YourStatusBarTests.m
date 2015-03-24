@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import <YourStatusBar/TWYourStatusBar.h>
 
 @interface YourStatusBarTests : XCTestCase
 
@@ -15,10 +16,39 @@
 
 @implementation YourStatusBarTests
 
+- (void)testStatusBarWindow {
+   
+    UIWindow *window = [TWYourStatusBar statusBarWindow];
+    XCTAssertTrue([window isKindOfClass:[UIWindow class]]);
+}
 
-- (void)testBlank {
-    // This is an example of a performance test case.
+- (void)testCustomText {
     
+    [TWYourStatusBar setCustomText:@"My Custom Text"];
+    UILabel *label = [[[TWYourStatusBar statusBarWindow] subviews] firstObject];
+    
+    XCTAssertTrue([label.text isEqualToString:@"My Custom Text"]);
+}
+
+- (void)testCustomView {
+    
+    UIView *customView = [[UIView alloc] init];
+    customView.backgroundColor = [UIColor redColor];
+    [TWYourStatusBar setCustomView:customView];
+    UIView *view = [[[TWYourStatusBar statusBarWindow] subviews] firstObject];
+    
+    XCTAssertTrue([view isEqual:customView]);
+}
+
+- (void)testCustomNilView {
+    
+    UIView *customView = [[UIView alloc] init];
+    customView.backgroundColor = [UIColor redColor];
+    [TWYourStatusBar setCustomView:customView];
+    [TWYourStatusBar setCustomView:nil];
+    UIView *view = [[[TWYourStatusBar statusBarWindow] subviews] firstObject];
+    
+    XCTAssertTrue([view isKindOfClass:[UILabel class]]);
 }
 
 @end

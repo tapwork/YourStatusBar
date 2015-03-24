@@ -1,1 +1,5 @@
 pod 'YourStatusBar', :path => '../'
+
+target "YourStatusBarTests" do
+  pod 'YourStatusBar', :path => "../"
+end
