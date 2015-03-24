@@ -1,0 +1,14 @@
+PODS:
+  - YourStatusBar (1.0.0)
+
+DEPENDENCIES:
+  - YourStatusBar (from `../`)
+
+EXTERNAL SOURCES:
+  YourStatusBar:
+    :path: ../
+
+SPEC CHECKSUMS:
+  YourStatusBar: fb88bf10a710ec8e97f4e825e27c56a1c51f1100
+
+COCOAPODS: 0.36.0
