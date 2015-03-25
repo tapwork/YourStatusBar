@@ -19,7 +19,6 @@ static CFMutableSetRef classesLoadedInRuntime;
 static UIWindow *kStatusBarWindow = nil;
 static UIView *kCustomView = nil;
 static UILabel *kTextLabel = nil;
-static bool kFoundStatusBarWindow = false;
 
 @implementation TWYourStatusBar
 
@@ -41,7 +40,7 @@ static bool kFoundStatusBarWindow = false;
 
 + (void)setCustomView:(UIView *)customView
 {
-    if (!kFoundStatusBarWindow) {
+    if (!kStatusBarWindow) {
         [self retrieveStatusBarWindow];
     }
     if (![kCustomView isEqual:customView]) {
@@ -57,7 +56,7 @@ static bool kFoundStatusBarWindow = false;
 
 + (void)setCustomText:(NSString*)text;
 {
-    if (!kFoundStatusBarWindow) {
+    if (!kStatusBarWindow) {
         [self retrieveStatusBarWindow];
     }
     kTextLabel.text = text;
@@ -78,7 +77,6 @@ static bool kFoundStatusBarWindow = false;
             if ([window respondsToSelector:@selector(subviews)]) {
                 [[window subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
                 kStatusBarWindow = window;
-                kFoundStatusBarWindow = true;
             }
         }
     }];
