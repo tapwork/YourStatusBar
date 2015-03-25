@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'YourStatusBar'
-  s.version  = '1.0.0'
+  s.version  = '1.0.1'
   s.license      = { :type => "MIT", :file => "LICENSE.md" }
   s.summary = 'Customize the iOS statusBar with your text or UIView'
   s.homepage = 'https://github.com/tapwork/YourStatusBar'
