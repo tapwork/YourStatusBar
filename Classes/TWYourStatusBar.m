@@ -16,7 +16,6 @@ typedef struct {
 } rm_maybe_object_t;
 
 static CFMutableSetRef classesLoadedInRuntime;
-static CGFloat kBarHeight;
 static UIWindow *kStatusBarWindow = nil;
 static UIView *kCustomView = nil;
 static UILabel *kTextLabel = nil;
@@ -33,7 +32,8 @@ static bool kFoundStatusBarWindow = false;
         label.backgroundColor = [UIColor lightGrayColor];
         label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         label.font = [UIFont systemFontOfSize:11];
-        label.frame = CGRectMake(0, 0, kStatusBarWindow.bounds.size.width, kBarHeight);
+        CGSize size = [UIApplication sharedApplication].statusBarFrame.size;
+        label.frame = CGRectMake(0, 0, size.width, size.height);
         [kStatusBarWindow addSubview:label];
         kTextLabel = label;
     }
@@ -76,8 +76,6 @@ static bool kFoundStatusBarWindow = false;
         if (!kStatusBarWindow && [object isKindOfClass:[UIWindow class]]) {
             UIWindow *window = (UIWindow *)object;
             if ([window respondsToSelector:@selector(subviews)]) {
-                UIView *firstSubView = [[window subviews] firstObject];
-                kBarHeight = firstSubView.bounds.size.height;
                 [[window subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
                 kStatusBarWindow = window;
                 kFoundStatusBarWindow = true;
