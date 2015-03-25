@@ -36,6 +36,10 @@ UIView *myView = [[UIView alloc] init];
 # Example project
 Like always this library comes with an example project.
 
+# References
+* [UIStatusBar](https://github.com/nst/iOS-Runtime-Headers/blob/master/Frameworks/UIKit.framework/UIStatusBar.h) UIKit's private header
+* [UIStatusBarWindow](https://github.com/nst/iOS-Runtime-Headers/blob/master/Frameworks/UIKit.framework/UIStatusBarWindow.h) UIKit's private header
+
 # Thanks
 * [Piet Brauer](https://twitter.com/pietbrauer) thanks for the clean up
 
