@@ -16,7 +16,13 @@ static UILabel *kTextLabel = nil;
 + (void)initialize
 {
     if (self == [TWYourStatusBar class]) {
-        [self retrieveStatusBarWindow];
+        
+        NSString *statusBarString = [NSString stringWithFormat:@"_statusBarWindow"];
+        UIWindow *window = [[UIApplication sharedApplication] valueForKey:statusBarString];
+        if ([window respondsToSelector:@selector(subviews)]) {
+            [[window subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        }
+        kStatusBarWindow = window;
         
         UILabel *label = [[UILabel alloc] init];
         label.backgroundColor = [UIColor lightGrayColor];
@@ -31,9 +37,6 @@ static UILabel *kTextLabel = nil;
 
 + (void)setCustomView:(UIView *)customView
 {
-    if (!kStatusBarWindow) {
-        [self retrieveStatusBarWindow];
-    }
     if (![kCustomView isEqual:customView]) {
         if (customView) {
             [kTextLabel removeFromSuperview];
@@ -48,27 +51,12 @@ static UILabel *kTextLabel = nil;
 
 + (void)setCustomText:(NSString*)text;
 {
-    if (!kStatusBarWindow) {
-        [self retrieveStatusBarWindow];
-    }
     kTextLabel.text = text;
 }
 
 + (UIWindow*)statusBarWindow
 {
     return kStatusBarWindow;
-}
-
-#pragma mark - internal class methods
-
-+ (void)retrieveStatusBarWindow
-{
-    NSString *statusBarString = [NSString stringWithFormat:@"_statusBarWindow"];
-    UIWindow *window = [[UIApplication sharedApplication] valueForKey:statusBarString];
-    if ([window respondsToSelector:@selector(subviews)]) {
-        [[window subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    }
-    kStatusBarWindow = window;
 }
 
 @end
