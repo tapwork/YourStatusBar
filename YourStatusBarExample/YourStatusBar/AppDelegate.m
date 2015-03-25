@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <YourStatusBar/TWYourStatusBar.h>
+#import "TWYourStatusBar.h"
 
 @interface AppDelegate ()
 
