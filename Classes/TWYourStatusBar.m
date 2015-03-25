@@ -45,12 +45,13 @@ static UILabel *kTextLabel = nil;
     }
     if (![kCustomView isEqual:customView]) {
         if (customView) {
+            [kTextLabel removeFromSuperview];
             [kStatusBarWindow addSubview:customView];
         } else {
+            [kStatusBarWindow addSubview:kTextLabel];
             [kCustomView removeFromSuperview];
         }
         kCustomView = customView;
-        kTextLabel.hidden = !customView;
     }
 }
 
