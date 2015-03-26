@@ -14,6 +14,14 @@ In big projects I often have the problem to find the right UIViewController clas
 
 # Usage
 Please make sure that you use YourStatusBar only for **DEBUG** purposes. Not in production mode, because  `UIStatusBarWindow` is private API.
+You could use `YourStatusBar` to display the current class like
+```
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [TWYourStatusBar setCustomText:NSStringFromClass([self class])];
+}
+```
 
 ## CocoaPods Installation
 Add it to your Podfile and run `pod install`
