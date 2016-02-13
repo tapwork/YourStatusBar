@@ -1,7 +1,7 @@
 # YourStatusBar
 ## Customize the statusBar of your iOS app with any text or UIView
 [![Build Status](https://api.travis-ci.org/tapwork/YourStatusBar.svg?style=flat)](https://travis-ci.org/tapwork/YourStatusBar)
-[![Cocoapods Version](http://img.shields.io/cocoapods/v/YourStatusBar.svg?style=flat)](https://github.com/tapwork/YourStatusBar/blob/master/YourStatusBar.podspec)
+[![CocoaPods Version](http://img.shields.io/cocoapods/v/YourStatusBar.svg?style=flat)](https://github.com/tapwork/YourStatusBar/blob/master/YourStatusBar.podspec)
 [![](http://img.shields.io/cocoapods/l/YourStatusBar.svg?style=flat)](https://github.com/tapwork/YourStatusBar/blob/master/LICENSE.md)
 [![CocoaPods Platform](http://img.shields.io/cocoapods/p/YourStatusBar.svg?style=flat)]()
 
