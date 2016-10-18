@@ -8,7 +8,6 @@
 You always asked yourself why you can't change the text in the iOS statusBar for debug reasons? Or custom UIViews? YourStatusBar tweaks the iOS statusBar to add custom text or views. 
 In big projects I often have the problem to find the right UIViewController class. So I wanted to see the current class name in the statusBar. That is actually the reason why I built this library here. 
 
-
 # Features
 * Set your text to the iOS statusBar
 * Add your custom UIView to the statusBar
