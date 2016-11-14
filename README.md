@@ -23,12 +23,21 @@ You could use `YourStatusBar` to display the current class like
 }
 ```
 
-## CocoaPods Installation
+## Installation
+#### CocoaPods
 Add it to your Podfile and run `pod install`
 ```
 pod 'YourStatusBar'
 ```
 And use `#import <YourStatusBar/TWYourStatusBar.h>`
+
+#### Carthage 
+You can use [Carthage](https://github.com/Carthage/Carthage). 
+Specify in Cartfile:
+
+```ruby
+github "tapwork/YourStatusBar"
+```
 
 ## Change text
 ```
