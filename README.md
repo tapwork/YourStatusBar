@@ -4,6 +4,8 @@
 [![CocoaPods Version](http://img.shields.io/cocoapods/v/YourStatusBar.svg?style=flat)](https://github.com/tapwork/YourStatusBar/blob/master/YourStatusBar.podspec)
 [![](http://img.shields.io/cocoapods/l/YourStatusBar.svg?style=flat)](https://github.com/tapwork/YourStatusBar/blob/master/LICENSE.md)
 [![CocoaPods Platform](http://img.shields.io/cocoapods/p/YourStatusBar.svg?style=flat)]()
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Twitter](https://img.shields.io/badge/twitter-@cmenschel-blue.svg?style=flat)](http://twitter.com/cmenschel)
 
 You always asked yourself why you can't change the text in the iOS statusBar for debug reasons? Or custom UIViews? YourStatusBar tweaks the iOS statusBar to add custom text or views. 
 In big projects I often have the problem to find the right UIViewController class. So I wanted to see the current class name in the statusBar. That is actually the reason why I built this library here. 
