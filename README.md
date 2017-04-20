@@ -14,6 +14,7 @@ In big projects I often have the problem to find the right UIViewController clas
 * Set your text to the iOS statusBar
 * Add your custom UIView to the statusBar
 
+
 # Usage
 Please make sure that you use YourStatusBar only for **DEBUG** purposes. Not in production mode, because  `UIStatusBarWindow` is private API.
 You could use `YourStatusBar` to display the current class like
