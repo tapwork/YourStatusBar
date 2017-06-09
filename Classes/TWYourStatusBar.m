@@ -16,22 +16,12 @@ static UILabel *kTextLabel = nil;
 + (void)initialize
 {
     if (self == [TWYourStatusBar class]) {
-        
         NSString *statusBarString = [NSString stringWithFormat:@"_statusBarWindow"];
         UIWindow *window = [[UIApplication sharedApplication] valueForKey:statusBarString];
         if ([window respondsToSelector:@selector(subviews)]) {
-            [[window subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            [[window subviews] makeObjectsPerformSelector:@selector(setHidden:) withObject:@1];
         }
         kStatusBarWindow = window;
-        
-        UILabel *label = [[UILabel alloc] init];
-        label.backgroundColor = [UIColor lightGrayColor];
-        label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        label.font = [UIFont systemFontOfSize:11];
-        CGSize size = [UIApplication sharedApplication].statusBarFrame.size;
-        label.frame = CGRectMake(0, 0, size.width, size.height);
-        [kStatusBarWindow addSubview:label];
-        kTextLabel = label;
     }
 }
 
@@ -49,9 +39,30 @@ static UILabel *kTextLabel = nil;
     }
 }
 
-+ (void)setCustomText:(NSString*)text;
++ (void)setCustomText:(NSString*)text
 {
+    if (!kTextLabel) {
+        UILabel *label = [[UILabel alloc] init];
+        label.backgroundColor = [UIColor lightGrayColor];
+        label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        label.font = [UIFont systemFontOfSize:11];
+        CGSize size = [UIApplication sharedApplication].statusBarFrame.size;
+        label.frame = CGRectMake(0, 0, size.width, size.height);
+        [kStatusBarWindow addSubview:label];
+        kTextLabel = label;
+    }
     kTextLabel.text = text;
+}
+
++ (void)reset
+{
+    [kTextLabel removeFromSuperview];
+    [kCustomView removeFromSuperview];
+    kTextLabel = nil;
+    kCustomView = nil;
+    if ([kStatusBarWindow respondsToSelector:@selector(subviews)]) {
+        [[kStatusBarWindow subviews] makeObjectsPerformSelector:@selector(setHidden:) withObject:nil];
+    }
 }
 
 + (UIWindow*)statusBarWindow

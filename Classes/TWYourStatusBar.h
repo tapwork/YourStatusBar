@@ -12,5 +12,6 @@
 + (void)setCustomText:(NSString*)text;
 + (UIWindow*)statusBarWindow;
 + (void)setCustomView:(UIView*)customView;
++ (void)reset;
 
 @end
