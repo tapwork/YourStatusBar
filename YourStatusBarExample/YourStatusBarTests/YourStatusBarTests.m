@@ -25,7 +25,7 @@
 - (void)testCustomText {
     
     [TWYourStatusBar setCustomText:@"My Custom Text"];
-    UILabel *label = [[[TWYourStatusBar statusBarWindow] subviews] firstObject];
+    UILabel *label = [[[TWYourStatusBar statusBarWindow] subviews] lastObject];
     
     XCTAssertTrue([label.text isEqualToString:@"My Custom Text"]);
 }
@@ -35,7 +35,7 @@
     UIView *customView = [[UIView alloc] init];
     customView.backgroundColor = [UIColor redColor];
     [TWYourStatusBar setCustomView:customView];
-    UIView *view = [[[TWYourStatusBar statusBarWindow] subviews] firstObject];
+    UIView *view = [[[TWYourStatusBar statusBarWindow] subviews] lastObject];
     
     XCTAssertTrue([view isEqual:customView]);
 }
@@ -46,7 +46,7 @@
     customView.backgroundColor = [UIColor redColor];
     [TWYourStatusBar setCustomView:customView];
     [TWYourStatusBar setCustomView:nil];
-    UIView *view = [[[TWYourStatusBar statusBarWindow] subviews] firstObject];
+    UIView *view = [[[TWYourStatusBar statusBarWindow] subviews] lastObject];
     
     XCTAssertTrue([view isKindOfClass:[UILabel class]]);
 }
